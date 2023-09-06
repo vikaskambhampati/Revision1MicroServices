@@ -1,0 +1,15 @@
+server:
+  port: 9090
+
+spring:
+  application:
+    name: gateway
+  config:
+    import: configserver:http://localhost:9296
+  cloud:
+    gateway:
+      routes:
+        - id: employeeservice
+          uri: lb://employeeservice
+          predicates:
+            - Path=/employee/**
