@@ -13,3 +13,15 @@ spring:
           uri: lb://employeeservice
           predicates:
             - Path=/employee/**
+        - id: productservice
+          uri: lb://productservice
+          predicates:
+            - Path=/product/**
+        - id: paymentservice
+          uri: lb://paymentservice
+          predicates:
+            - Path=/payment/**
+        - id: orderservice
+          uri: lb://orderservice
+          predicates:
+            - Path=/order/**

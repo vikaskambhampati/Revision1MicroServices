@@ -1,0 +1,19 @@
+server:
+  port: 8084
+
+spring:
+  datasource:
+    url: jdbc:mysql://${DBHOST_ENV:localhost}:3306/orderDBrev1
+    username: root
+    password: TempDump989
+    driverClassName: com.mysql.cj.jdbc.Driver
+    initialize: false
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL57InnoDBDialect
+    hibernate:
+      ddl-auto: update
+  application:
+    name: orderservice
+  config:
+    import: configserver:http://localhost:9296
+

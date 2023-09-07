@@ -8,9 +8,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Employee" />
+        <module name="Gateway" />
+        <module name="ProductService" />
         <module name="ServiceRegistry" />
         <module name="ConfigServer" />
-        <module name="Gateway" />
+        <module name="OrderService" />
+        <module name="PaymentService" />
       </profile>
     </annotationProcessing>
   </component>
@@ -19,6 +22,9 @@
       <module name="ConfigServer" options="-parameters" />
       <module name="Employee" options="-parameters" />
       <module name="Gateway" options="-parameters" />
+      <module name="OrderService" options="-parameters" />
+      <module name="PaymentService" options="-parameters" />
+      <module name="ProductService" options="-parameters" />
       <module name="ServiceRegistry" options="-parameters" />
     </option>
   </component>
