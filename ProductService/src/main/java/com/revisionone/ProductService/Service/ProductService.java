@@ -7,4 +7,8 @@ import org.springframework.stereotype.Service;
 
 public interface ProductService {
     ProductResponse saveProduct(ProductRequest productRequest);
+
+    ProductResponse getProductById(long id);
+
+    ProductResponse reduceProductQuantity(long quantity, long productId);
 }

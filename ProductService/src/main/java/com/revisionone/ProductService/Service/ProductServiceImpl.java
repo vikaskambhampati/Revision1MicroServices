@@ -27,4 +27,22 @@ public class ProductServiceImpl implements ProductService{
                 .build();
         return productResponse;
     }
+
+    @Override
+    public ProductResponse getProductById(long id) {
+        ProductEntity productEntity = productRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found"));
+        ProductResponse productResponse = new ProductResponse();
+        BeanUtils.copyProperties(productEntity, productResponse);
+        return productResponse;
+    }
+
+    @Override
+    public ProductResponse reduceProductQuantity(long quantity, long productId) {
+        ProductEntity productEntity = productRepository.findById(productId).orElseThrow(() -> new RuntimeException("Product Not found"));
+        productEntity.setProductQuantity(productEntity.getProductQuantity()-quantity);
+        productRepository.save(productEntity);
+        ProductResponse productResponse = new ProductResponse();
+        BeanUtils.copyProperties(productEntity, productResponse);
+        return productResponse;
+    }
 }

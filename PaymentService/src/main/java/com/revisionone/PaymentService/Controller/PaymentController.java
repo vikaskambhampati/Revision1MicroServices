@@ -6,10 +6,7 @@ import com.revisionone.PaymentService.Service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/payment")
@@ -21,5 +18,17 @@ public class PaymentController {
     public ResponseEntity<PaymentResponse> savePayment(@RequestBody PaymentRequest paymentRequest){
         PaymentResponse paymentResponse = paymentService.savePayment(paymentRequest);
         return new ResponseEntity<>(paymentResponse, HttpStatus.CREATED);
+    }
+
+    @GetMapping(value = "/getPaymentById/{id}")
+    public PaymentResponse getPaymentById(@PathVariable long id){
+        PaymentResponse paymentResponse = paymentService.getPaymentById(id);
+        return paymentResponse;
+    }
+
+    @GetMapping(value = "/getPaymentByOrderId/{orderId}")
+    public PaymentResponse getPaymentbyOrderId(@PathVariable long orderId){
+        PaymentResponse paymentResponse = paymentService.getPaymentByOrderId(orderId);
+        return paymentResponse;
     }
 }

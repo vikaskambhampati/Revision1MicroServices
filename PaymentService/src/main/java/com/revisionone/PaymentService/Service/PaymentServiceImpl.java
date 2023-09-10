@@ -31,4 +31,20 @@ public class PaymentServiceImpl implements PaymentService{
                 .build();
         return paymentResponse;
     }
+
+    @Override
+    public PaymentResponse getPaymentById(long id) {
+        PaymentEntity paymentEntity = paymentRepository.findById(id).orElseThrow(() -> new RuntimeException("Payment Not found"));
+        PaymentResponse paymentResponse = new PaymentResponse();
+        BeanUtils.copyProperties(paymentEntity, paymentResponse);
+        return paymentResponse;
+    }
+
+    @Override
+    public PaymentResponse getPaymentByOrderId(long orderId) {
+        PaymentEntity paymentEntity = paymentRepository.findByOrderId(orderId);
+        PaymentResponse paymentResponse = new PaymentResponse();
+        BeanUtils.copyProperties(paymentEntity, paymentResponse);
+        return paymentResponse;
+    }
 }

@@ -25,3 +25,10 @@ spring:
           uri: lb://orderservice
           predicates:
             - Path=/order/**
+okta:
+  oauth2:
+    issuer: https://dev-93513533.okta.com/oauth2/default
+    audience: api://default
+    client-id: 0oab6om74e3taKutD5d7
+    client-secret: yUxcjo-qDV58U41oJO6M8cbxNyMYXZSkgo7fdJTLfXM4RMzh0zp6eeCeIFZa8tYR
+    scopes: internal, openid, profile, email, offline_access
